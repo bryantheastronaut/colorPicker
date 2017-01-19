@@ -1,10 +1,12 @@
 import React from 'react';
+import {ColorSamples} from './ColorSamples';
 
 export const ColorPicker = props => {
   let {r, g, b, hex} = props.color;
   let style = {
     main:{
       fontSize: '1.25rem',
+      boxShadow: '1px 1px 2px #333',
       fontFamily: 'Helvetica, sans-serif',
       fontWeight: '100',
       backgroundColor: hex || `rgb(${r},${g},${b})`,
@@ -17,11 +19,11 @@ export const ColorPicker = props => {
     colorInput: {
       backgroundColor: '#fafafa',
       padding: '20px',
-      borderRadius: '25px',
       position: 'relative',
-      top: '45%',
+      top: '24px',
+      borderRadius: '25px',
       width: '70%',
-      margin: '0 auto'
+      margin: '20px auto'
     },
     flexStyle: {
       width: '75%',
@@ -78,6 +80,8 @@ export const ColorPicker = props => {
                  onChange={props.onHandleChange} />
         </div>
       </div>
+      <ColorSamples onHandleChange={props.onHandleChange} presets={props.presets}/>
+      <button onClick={() => props.onSetColor()}> Set color!</button>
     </div>
   );
 };
